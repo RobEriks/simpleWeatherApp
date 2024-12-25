@@ -74,10 +74,24 @@ const WeatherApp: React.FC = () => {
   }
 
 
+return (
+  <div>
+    className={`min-h-screen flex flex-col items-center justify-center text-white ${getBackground()}`}
 
 
-
-  return <div>WeatherApp!</div>
+    <div className="p-8 rounded-lg shadow-lg bg-opacity-50 bg-gray-800">
+      <h1 className="text-3xl font-bold mb-4">
+        {weather.name}, {weather.sys.country}
+      </h1>
+      <h2 className="text-2xl mb-4">
+        {unit === "C"
+          ? `${weather.main.temp} °C`
+          : `${((weather.main.temp * 9) / 5 + 32).toFixed(1)} °F`}
+      </h2>
+      
+      </div> 
+  </div>
+)
 
 
 
