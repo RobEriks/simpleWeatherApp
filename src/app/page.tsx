@@ -6,7 +6,7 @@ import axios from "axios";
 const WeatherApp: React.FC = () => {
   const [weather, setWeather] = useState<any>(null);
   const [unit, setUnit] = useState<"C" | "F">("C");
-  const [loeading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
 
@@ -55,11 +55,23 @@ const WeatherApp: React.FC = () => {
       default:
         return "bg-gray-300"  
     }
-    
-
   }
   
+  if (loading) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-gray-200 text-black">
+        Loading weather
+      </div>
+    );
+  }
 
+  if (error) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-red-500 text-white">
+        {error}
+      </div>
+    );
+  }
 
 
 
