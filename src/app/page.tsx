@@ -33,6 +33,31 @@ const WeatherApp: React.FC = () => {
     }
   }, []);
   
+  const toggleUnit = () => {
+    setUnit(unit === "C" ? "F" : "C");
+  };
+
+  const getBackground = () => {
+    if (!weather) return "bg=gray-400";
+    const condition = weather.weather[0].main.toLowerCase();
+
+    switch(condition) {
+      case "clear":
+        return "bg-blue-500"
+      case "clouds":
+        return "bg-gary-400"
+      case "rain":
+        return "bg-blue-800"
+      case "snow":
+        return "bg-white"    
+      case "thunderstorm":
+        return "bg-purple-700"
+      default:
+        return "bg-gray-300"  
+    }
+    
+
+  }
   
 
 
