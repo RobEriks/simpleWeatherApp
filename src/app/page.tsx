@@ -45,7 +45,7 @@ const WeatherApp: React.FC = () => {
       case "clear":
         return "bg-blue-500"
       case "clouds":
-        return "bg-gary-400"
+        return "bg-gray-400"
       case "rain":
         return "bg-blue-800"
       case "snow":
@@ -74,24 +74,38 @@ const WeatherApp: React.FC = () => {
   }
 
 
-return (
-  <div>
-    className={`min-h-screen flex flex-col items-center justify-center text-white ${getBackground()}`}
 
-
-    <div className="p-8 rounded-lg shadow-lg bg-opacity-50 bg-gray-800">
-      <h1 className="text-3xl font-bold mb-4">
-        {weather.name}, {weather.sys.country}
-      </h1>
-      <h2 className="text-2xl mb-4">
-        {unit === "C"
-          ? `${weather.main.temp} °C`
-          : `${((weather.main.temp * 9) / 5 + 32).toFixed(1)} °F`}
-      </h2>
-      
-      </div> 
-  </div>
-)
+  return (
+    <div
+      className={`min-h-screen flex flex-col items-center justify-center text-white ${getBackground()}`}
+    >
+      <div className="p-8 rounded-lg shadow-lg bg-opacity-50 bg-gray-800">
+        <h1 className="text-3xl font-bold mb-4">
+          {weather.name}, {weather.sys.country}
+        </h1>
+        <h2 className="text-2xl mb-4">
+          {unit === "C"
+            ? `${weather.main.temp} °C`
+            : `${((weather.main.temp * 9) / 5 + 32).toFixed(1)} °F`}
+        </h2>
+        <img
+          src={weather.weather[0].icon}
+          alt="Weather Icon"
+          className="w-24 h-24 mx-auto mb-4"
+        />
+        <p className="text-lg mb-4">
+          {weather.weather[0].description}
+        </p>
+        <button
+          onClick={toggleUnit}
+          className="bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-300"
+        >
+          Switch to {unit === "C" ? "Fahrenheit" : "Celsius"}
+        </button>
+      </div>
+    </div>
+  );
+  
 
 
 
